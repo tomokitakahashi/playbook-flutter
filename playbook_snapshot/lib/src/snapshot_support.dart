@@ -14,11 +14,16 @@ class SnapshotSupport {
     Widget target,
     WidgetTester tester,
     SnapshotDevice device,
+    Duration? duration,
   ) async {
     tester.binding.window.devicePixelRatioTestValue = 1;
     await _setSnapshotSize(tester, device.size);
     await tester.pumpWidget(target);
-    await tester.pumpAndSettle();
+    if (duration != null) {
+      await tester.pump(duration);
+    } else {
+      await tester.pumpAndSettle();
+    }
   }
 
   static Future<void> resize(

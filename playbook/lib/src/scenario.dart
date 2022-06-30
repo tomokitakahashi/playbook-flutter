@@ -8,6 +8,7 @@ class Scenario {
     this.layout = const ScenarioLayout.compressed(),
     this.scale = 0.3,
     this.alignment = Alignment.center,
+    this.drawingDuration,
     required this.child,
   });
 
@@ -15,5 +16,6 @@ class Scenario {
   final ScenarioLayout layout;
   final double scale;
   final AlignmentGeometry alignment;
+  final Duration? drawingDuration;
   final Widget child;
 }

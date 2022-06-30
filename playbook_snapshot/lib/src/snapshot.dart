@@ -43,7 +43,12 @@ class Snapshot implements TestTool {
           runApp(Container(key: UniqueKey()));
           final scenarioWidget = builder(ScenarioWidget(scenario: scenario));
           await tester.runAsync(() async {
-            await SnapshotSupport.startDevice(scenarioWidget, tester, device);
+            await SnapshotSupport.startDevice(
+              scenarioWidget,
+              tester,
+              device,
+              scenario.drawingDuration,
+            );
             await SnapshotSupport.resize(scenarioWidget, scenario, tester, device);
             await SnapshotSupport.precacheAssetImage(tester);
 
